@@ -1,0 +1,9 @@
+OAR_Name,Priority,isDmax
+Total Lung-GTV,1,False
+SpinalCord,2,True
+Heart,2,False
+LAD,3,False
+Esophagus,2,False
+BrachialPlexus,3,False
+GreatVessels,3,False
+Trachea,3,False

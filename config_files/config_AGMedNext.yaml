@@ -1,0 +1,43 @@
+
+
+loader_params: 
+
+    'train_bs': 2
+    'val_bs': 1
+    'csv_root': 'meta_files/meta_data.csv'
+    'csv_root_validation': 'meta_files/meta_data_validation.csv'
+    'csv_HaN_OAR_priority_root': 'meta_files/HaN_OAR_update.csv'
+    'csv_LUNG_OAR_priority_root': 'meta_files/LUNG_OAR_update.csv'
+    'scale_dose_dict': 'meta_files/PTV_DICT.json'
+    'pat_obj_dict': 'meta_files/Pat_Obj_DICT.json'
+    'num_workers': 4
+    'down_HU': -1000
+    'up_HU': 1000
+    'denom_norm_HU': 500
+
+    'in_size': [96, 128, 160]
+    'out_size': [96, 128, 160]
+    'CatStructures': False
+
+    'dose_div_factor': 10 
+    
+    
+model_params:
+    num_input_channels: 6
+    out_channels: 1
+    model_id: 'A'
+    kernel_size: 3
+    deep_supervision: False
+    
+lr: 0.0001
+
+num_epochs: 400
+
+act_sig: False
+
+scale_out: 7.5
+
+scale_loss: 4
+
+save_model_root: ./trained_model
+#save_model_root: ../pretrainmodel/GDP-HMM_Challenge/lightning
