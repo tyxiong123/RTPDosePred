@@ -53,13 +53,13 @@ if __name__ == '__main__':
     # out_channels = cfig['model_params']['out_channels'], 
     # ).to(device)
 
-    model_samll = create_mednext_v1( num_input_channels = cfig['model_params']['num_input_channels'],
+    model_small = create_mednext_v1( num_input_channels = cfig['model_params']['num_input_channels'],
     num_classes = cfig['model_params']['out_channels'],
     model_id = cfig['model_params']['model_id'],          # S, B, M and L are valid model ids
     kernel_size = cfig['model_params']['kernel_size_small'],   # 3x3x3 and 5x5x5 were tested in publication
     deep_supervision = cfig['model_params']['deep_supervision']   
     ).to(device)
-    model_samll.load_state_dict(torch.load(cfig['save_small_model_path'], map_location = device))
+    model_small.load_state_dict(torch.load(cfig['save_small_model_path'], map_location = device))
 
     model = create_mednext_v1( num_input_channels = cfig['model_params']['num_input_channels'],
     num_classes = cfig['model_params']['out_channels'],
@@ -67,8 +67,8 @@ if __name__ == '__main__':
     kernel_size = cfig['model_params']['kernel_size_large'],   # 3x3x3 and 5x5x5 were tested in publication
     deep_supervision = cfig['model_params']['deep_supervision']   
     ).to(device)
-    #model = upkern_load_weights(model_large, model_samll)
-    model = upkern_init_load_weights(model, model_samll)
+    #model = upkern_load_weights(model_large, model_small)
+    model = upkern_init_load_weights(model, model_small)
     
     # ------------ loss -----------------------# 
     optimizer = optim.Adam([{'params': model.parameters(), 'initial_lr':cfig['lr']}], lr=cfig['lr'])
